@@ -3,8 +3,56 @@
     <h3>
       Here is your Meal!
     </h3>
-    <h5>Get a random meal by clicking below</h5>
     <a href="/meal">Find another meal</a>
   </div>
-  <div id="meal" class="row meal"></div>
-</div>
+
+  <div id="meal" clvass="row meal">
+
+    <div class="row">
+      <div class="columns five">
+        <img src="{{meal.strMealThumb}}" alt="Meal Image">
+
+        {{#if meal.strCategory}}
+        <p><strong>Category:</strong> {{meal.strCategory}}</p>
+        {{else}}
+        ""
+        {{/if}}
+
+        {{#if meal.strArea}}
+        <p><strong>Area:</strong> {{meal.strArea}}</p>
+        {{else}}
+        ""
+        {{/if}}
+
+        {{#if meal.strTags}}
+        <p><strong>Tags:</strong> {{meal.strTags}}</p>
+        {{else}}
+        ""
+        {{/if}}
+
+        <h5>Ingredients:</h5>
+        <ul>
+          {{#each ingredients}}
+          <li>{{this}}</li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="columns seven instructions">
+        <h4>{{meal.strMeal}}</h4>
+        <p>{{meal.strInstructions}}</p>
+      </div>
+    </div>
+
+    {{#if meal.strYoutube}}
+    <div class="row">
+      <h5>Video Recipe</h5>
+      <div class="videoWrapper">
+        <iframe width="420" height="315" src={{meal.strYoutube}}>
+        </iframe>
+      </div>
+    </div>
+    {{else}}
+    ""
+    {{/if}}
+
+  </div>

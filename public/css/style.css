@@ -45,6 +45,9 @@ li {
   text-align: center;
 }
 
+.instructions {
+  white-space: pre-line;
+}
 .videoWrapper {
   position: relative;
   padding-bottom: 56.25%;

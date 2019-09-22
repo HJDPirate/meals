@@ -6,8 +6,17 @@
     {{!-- test comment --}}
     <h5>Get a random meal by clicking below</h5>
     <form action="/find" method="GET">
-      <button type="submit" class="button-primary" id="get_meal">Get Meal 🍔</button>
+      <button type="submit" class="button-primary" id="get_meal">Get Random Meal 🍔</button>
     </form>
+
+    <div class="search">
+      <form action="/search" method="POST">
+        <label for="search">Search for Meal </label>
+        <input type="text" name="search" placeholder="enter type of meal" required>
+        <button type="submit" class="button-primary" id="search_meal">Search for Meal 🍔</button>
+      </form>
+    </div>
+
   </div>
-  <div id="meal" class="row meal"></div>
+
 </div>
