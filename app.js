@@ -30,6 +30,9 @@ app.use(express.static("public"));
 
 // Routes
 app.use("/", router);
+app.use("*", (req, res) => {
+  res.status(404).send("<h1 >STATUS 404<br>FILE NOT FOUND</h1>");
+});
 
 // Server
 const PORT = 5000;

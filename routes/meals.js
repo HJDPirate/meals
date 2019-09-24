@@ -71,7 +71,8 @@ router.get("/find", async (req, res) => {
     const url = getUrl("random", null);
     const data = await getData(url);
     const { ingredients, meal } = await createMeal(data);
-
+    console.log(ingredients);
+    //res.send({ test: "find route data" });
     res.render("meals/find", {
       meal,
       ingredients
@@ -95,6 +96,11 @@ router.post("/search", async (req, res) => {
   } catch (err) {
     console.warn(err);
   }
+});
+
+router.get("/test", (req, res) => {
+  console.log("test route!!!");
+  res.send({ test: "test data from route" });
 });
 
 module.exports = router;

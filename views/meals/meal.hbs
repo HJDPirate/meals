@@ -5,18 +5,20 @@
     </h3>
     {{!-- test comment --}}
     <h5>Get a random meal by clicking below</h5>
-    <form action="/find" method="GET">
-      <button type="submit" class="button-primary" id="get_meal">Get Random Meal 🍔</button>
+    <a href="/find">get random meal</a>
+    <form id="random_form">
+      <button type="submit" class="button-primary" id="random_btn">Get Random Meal 🍔</button>
     </form>
 
     <div class="search">
-      <form action="/search" method="POST">
+      <form id="search_form">
         <label for="search">Search for Meal </label>
-        <input type="text" name="search" placeholder="enter type of meal" required>
-        <button type="submit" class="button-primary" id="search_meal">Search for Meal 🍔</button>
+        <input type="text" id="search_input" name="search" placeholder="enter type of meal" required>
+        <button type="submit" class="button-primary" id="search_btn">Search for Meal 🍔</button>
       </form>
     </div>
 
   </div>
 
 </div>
+<script src="/js/client_meal.js"></script>
