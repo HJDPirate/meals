@@ -1,3 +1,5 @@
+const dotenv = require("dotenv");
+dotenv.config();
 const express = require("express");
 const exphbs = require("express-handlebars");
 const path = require("path");
@@ -5,6 +7,20 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mealsRouter = require("./routes/meals");
 const usersRouter = require("./routes/users");
+const mongoose = require("mongoose");
+
+// Connect database
+//mongoose.connect("mongodb://127.0.0.1:27017/meals", {
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true
+});
+
+const db = mongoose.connection;
+db.on("error", error => console.error(error));
+db.once("open", () => console.log("Connected to MongoDB"));
 
 const app = express();
 

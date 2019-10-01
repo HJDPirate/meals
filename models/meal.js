@@ -1,10 +1,29 @@
 const mongoose = require("mongoose");
 
 const mealSchema = new mongoose.Schema({
-  meal: {
-    name: String,
-    required: true,
-    trim: true
+  strMeal: {
+    type: String
+  },
+  strMealThumb: {
+    type: String
+  },
+  strCategory: {
+    type: String
+  },
+  strArea: {
+    type: String
+  },
+  strTags: {
+    type: String
+  },
+  ingredients: {
+    type: Array
+  },
+  strInstructions: {
+    type: String
+  },
+  strYoutube: {
+    type: String
   }
 });
 
