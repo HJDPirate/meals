@@ -1,13 +1,18 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const path = require("path");
-const router = require("./routes/meals");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const mealsRouter = require("./routes/meals");
+const usersRouter = require("./routes/users");
 
 const app = express();
 
 app.use(morgan("dev"));
+
+// Static folder
+app.use(express.static(path.join(__dirname, "public")));
+//app.use(express.static("public"));
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -24,12 +29,16 @@ app.engine(
 
 app.set("view engine", "hbs");
 
-// Static folder
-//app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static("public"));
-
 // Routes
-app.use("/", router);
+app.get("/", (req, res) => {
+  res.render("index");
+});
+app.use("/meals", mealsRouter);
+app.use("/users", usersRouter);
+app.all("*", (req, res, next) => {
+  res.send("Page not found!");
+  //next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+});
 
 // Server
 const PORT = 5000;

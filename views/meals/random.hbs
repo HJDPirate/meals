@@ -3,7 +3,7 @@
     <h3>
       Here is your Meal!
     </h3>
-    <a href="/meal">Find another meal</a>
+    <a href="/meals/meal">Find another meal</a>
   </div>
 
   <div id="meal" clvass="row meal">
@@ -32,7 +32,7 @@
 
         <h5>Ingredients:</h5>
         <ul>
-          {{#each ingredients}}
+          {{#each meal.ingredients}}
           <li>{{this}}</li>
           {{/each}}
         </ul>
