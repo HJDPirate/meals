@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 const mealSchema = new mongoose.Schema({
   strMeal: {
-    type: String
+    type: String,
+    rwquired: true
   },
   strMealThumb: {
     type: String
@@ -17,13 +18,24 @@ const mealSchema = new mongoose.Schema({
     type: String
   },
   ingredients: {
-    type: Array
+    type: Array,
+    rwquired: true
   },
   strInstructions: {
-    type: String
+    type: String,
+    rwquired: true
   },
   strYoutube: {
     type: String
+  },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "User"
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
   }
 });
 

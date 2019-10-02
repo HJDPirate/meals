@@ -10,7 +10,6 @@ const usersRouter = require("./routes/users");
 const mongoose = require("mongoose");
 
 // Connect database
-//mongoose.connect("mongodb://127.0.0.1:27017/meals", {
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -57,5 +56,5 @@ app.all("*", (req, res, next) => {
 });
 
 // Server
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server listening on ${PORT}`));
