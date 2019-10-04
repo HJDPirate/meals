@@ -28,6 +28,9 @@ const mealSchema = new mongoose.Schema({
   strYoutube: {
     type: String
   },
+  notes: {
+    type: String
+  },
   author: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,

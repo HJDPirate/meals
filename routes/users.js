@@ -6,7 +6,7 @@ const User = require("../models/user");
 // New user sign-up
 router.post("/signup", async (req, res) => {
   const user = new User(req.body);
-  console.log("User", user);
+
   try {
     await user.save();
     const token = await user.newAuthToken();
@@ -23,6 +23,10 @@ router.post("/login", async (req, res) => {
       req.body.email,
       req.body.password
     );
+    console.log("user is", user);
+    if (!user) {
+      return res.status(400).send("account not found");
+    }
     const token = await user.newAuthToken();
     res.send({ user, token });
   } catch (e) {
