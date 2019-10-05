@@ -4,47 +4,48 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const Meal = require("./meal");
 
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    //required: true,
-    trim: true
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true,
-    validate(value) {
-      if (!validator.isEmail(value)) {
-        throw new Error("Email is invalid!");
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      //required: true,
+      trim: true
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+      validate(value) {
+        if (!validator.isEmail(value)) {
+          throw new Error("Email is invalid!");
+        }
       }
-    }
-  },
-  password: {
-    type: String,
-    required: [true, "Please provide password."],
-    minlength: 8
-  },
-  tokens: [
-    {
-      token: {
-        type: String,
-        required: true
+    },
+    password: {
+      type: String,
+      required: [true, "Please provide password."],
+      minlength: 8
+    },
+    tokens: [
+      {
+        token: {
+          type: String,
+          required: true
+        }
       }
-    }
-  ],
-  createdAt: {
-    type: Date,
-    default: Date.now
+    ]
+  },
+  {
+    timestamps: true
   }
-});
+);
 
-// userSchema.virtual("meals", {
-//   ref: "Meal",
-//   localField: "_id",
-//   foreignField: "author"
-// });
+userSchema.virtual("meals", {
+  ref: "Meal",
+  localField: "_id",
+  foreignField: "author"
+});
 
 userSchema.methods.toJSON = function() {
   const user = this;

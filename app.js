@@ -52,7 +52,6 @@ app.use("/meals", mealsRouter);
 app.use("/users", usersRouter);
 app.all("*", (req, res, next) => {
   res.send("Page not found!");
-  //next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
 // Server

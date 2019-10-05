@@ -23,7 +23,7 @@ const getAPImeal = async function(endPt, value) {
     }
   };
 
-  async function createMeal(meal) {
+  const createMeal = meal => {
     const ingredients = [];
     // Get all ingredients from the object. Up to 20
     for (let i = 1; i <= 20; i++) {
@@ -47,7 +47,7 @@ const getAPImeal = async function(endPt, value) {
     }
 
     return { ...meal, ingredients };
-  }
+  };
 
   const url = getUrl(endPt, value);
   const data = await getData(url);

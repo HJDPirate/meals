@@ -23,7 +23,7 @@ router.post("/login", async (req, res) => {
       req.body.email,
       req.body.password
     );
-    console.log("user is", user);
+    
     if (!user) {
       return res.status(400).send("account not found");
     }
